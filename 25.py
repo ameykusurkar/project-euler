@@ -4,9 +4,7 @@ def fib():
         yield y
         x, y = y, x + y
 
-fibs = fib()
+def first_match(iterable, condition):
+    return next(x for x in iterable if condition(x))
 
-for i, f in enumerate(fibs, 1):
-    if len(str(f)) == 1000:
-        print(i, f)
-        break
+print(first_match(enumerate(fib(), 1), lambda f: len(str(f[1])) == 1000))
